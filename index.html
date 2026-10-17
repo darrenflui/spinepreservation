@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Spine Preservation Blueprint & Clinical Monograph | Lui & Bernard</title>
+  
+  <!-- MOBILE APP PWA TAGS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="manifest" href="manifest.json">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .gradient-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f766e 100%); }
+    input[type=range] { accent-color: #0d9488; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- TOP NAVIGATION WITH DUAL VIEW SWITCHER -->
+  <header class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-teal-500 flex items-center justify-center font-bold text-slate-900 text-lg">SP</div>
+        <div>
+          <span class="font-bold tracking-tight text-base sm:text-lg">SpinePreservation<span class="text-teal-400">.org</span></span>
+          <span class="hidden md:inline-block text-xs text-slate-400 ml-2 border-l border-slate-800 pl-2">Consultant Spinal Surgery & Mechanobiology</span>
+        </div>
+      </div>
+      
+      <!-- VIEW SWITCHER BUTTONS -->
+      <nav class="hidden lg:flex space-x-1 bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs font-semibold">
+        <button onclick="switchView('patient')" id="navPatient" class="px-4 py-2 rounded-lg bg-teal-500 text-slate-950 transition shadow">
+          👤 Patient Blueprint & App
+        </button>
+        <button onclick="switchView('monograph')" id="navMonograph" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition">
+          📚 Clinical Monograph & Science (n=20)
+        </button>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <button onclick="switchView('monograph'); window.scrollTo({top:0, behavior:'smooth'});" class="lg:hidden bg-slate-800 text-teal-400 border border-teal-500/30 text-xs font-semibold px-3 py-2 rounded-lg">
+          📚 Science
+        </button>
+        <a href="#app-demo" onclick="switchView('patient')" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold text-xs sm:text-sm px-3.5 py-2 rounded-lg transition">
+          Log Today
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- VIEW 1: PATIENT BLUEPRINT & APP INTERFACE  -->
+  <!-- ========================================== -->
+  <div id="viewPatient" class="view-container">
+    
+    <!-- HERO SECTION -->
+    <section class="gradient-hero text-white py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center space-x-2 bg-teal-500/20 border border-teal-400/30 rounded-full px-3.5 py-1 text-xs font-medium text-teal-300 mb-5">
+            <span>Consultant-Led Digital Therapeutic & Joint Preservation</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-5">
+            Beyond the Scan: The <span class="text-teal-400">Repair Envelope</span> Blueprint for Your Spine.
+          </h1>
+          <p class="text-base sm:text-xl text-slate-300 leading-relaxed mb-6">
+            Our research shows that up to <strong>89% of completely pain-free adults</strong> have active "wear and tear" on advanced bone scans[cite: 5]. Structural degeneration does not equal pain. Pain happens when daily mechanical load outpaces your body’s biological capacity for overnight repair.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-6">
+            <button onclick="switchView('monograph'); window.scrollTo({top:0, behavior:'smooth'});" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition shadow">
+              🔬 Read the Full Professional Monograph & Biomechanics →
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-4 items-center text-sm text-slate-300 border-t border-slate-700/80 pt-5">
+            <div><strong class="text-white">Mr. Darren F. Lui</strong> FRCS (Tr&Orth) — London & Dublin</div>
+            <span class="hidden sm:inline text-slate-600">•</span>
+            <div><strong class="text-white">Mr. Jason Bernard</strong> FRCS (Tr&Orth) — London</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE APP PROTOTYPE SECTION -->
+    <section id="app-demo" class="py-14 bg-slate-100 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-1 rounded-full">Interactive Patient Web-App</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">Daily "Repair Envelope" Tracker & Nudge System</h2>
+          <p class="text-slate-600 mt-2 text-sm sm:text-base">Log your daily sleep, stiffness, liveliness, and rechargers in 15 seconds. Your scores save directly to your phone so you can track your 6-week recovery curve.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- LEFT COLUMN: DAILY CHECK-IN -->
+          <div class="lg:col-span-5 bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-8">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
+              <div>
+                <h3 class="font-bold text-lg text-slate-900">1. Daily Check-In</h3>
+                <p class="text-xs text-slate-500">Morning & Evening Feedback Loop</p>
+              </div>
+              <button onclick="downloadNudgeAlarms()" class="text-xs font-semibold bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 px-2.5 py-1.5 rounded-lg transition">
+                🔔 Get Daily Nudges
+              </button>
+            </div>
+
+            <!-- Sliders -->
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-1">
+                  <label for="sleepInput" class="text-slate-700">Last Night's Flat Sleep (Osmotic Refill)</label>
+                  <span id="sleepVal" class="font-bold text-teal-700">7.5 hrs</span>
+                </div>
+                <input id="sleepInput" type="range" min="4" max="10" step="0.5" value="7.5" class="w-full cursor-pointer" oninput="updateEnvelope()">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-1">
+                  <label for="stiffInput" class="text-slate-700">How STIFF are you today? (1–10)</label>
+                  <span id="stiffVal" class="font-bold text-amber-600">3 / 10</span>
+                </div>
+                <input id="stiffInput" type="range" min="1" max="10" step="1" value="3" class="w-full cursor-pointer" oninput="updateEnvelope()">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-1">
+                  <label for="liveInput" class="text-slate-700">How LIVELY are you today? (1–10)</label>
+                  <span id="liveVal" class="font-bold text-teal-600">7 / 10</span>
+                </div>
+                <input id="liveInput" type="range" min="1" max="10" step="1" value="7" class="w-full cursor-pointer" oninput="updateEnvelope()">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-1">
+                  <label for="painInput" class="text-slate-700">What is your PAIN level today? (1–10)</label>
+                  <span id="painVal" class="font-bold text-rose-600">2 / 10</span>
+                </div>
+                <input id="painInput" type="range" min="1" max="10" step="1" value="2" class="w-full cursor-pointer" oninput="updateEnvelope()">
+              </div>
+            </div>
+
+            <!-- Envelope Gauge Output -->
+            <div class="mt-6 bg-slate-900 text-white rounded-xl p-5">
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Bernard Theorem Balance</span>
+                <span id="envelopeBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500 text-slate-950">Repairing (+Surplus)</span>
+              </div>
+              <div class="flex items-baseline space-x-2">
+                <span id="envelopeScore" class="text-4xl font-extrabold text-teal-400">88%</span>
+                <span class="text-xs text-slate-400">Repair Capacity vs. Load</span>
+              </div>
+              <div class="w-full bg-slate-700 h-2.5 rounded-full mt-2.5 overflow-hidden">
+                <div id="envelopeBar" class="bg-teal-400 h-full transition-all duration-300" style="width: 88%"></div>
+              </div>
+              <button onclick="saveDailyLog()" class="mt-4 w-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs sm:text-sm py-2.5 rounded-lg transition shadow">
+                💾 Save Today's Check-In to Phone Log
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: TIMER & LOG TABLE -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-teal-400">Mid-Day Nudge Tool</span>
+                <h4 class="text-lg font-bold mt-1">15-Min 90/90 Psoas Refill Timer</h4>
+                <p class="text-xs text-slate-300 mt-1">Lie flat with calves on a chair to slacken the psoas bowstring and rehydrate discs.</p>
+              </div>
+              <div class="text-center">
+                <span id="timerDisplay" class="text-3xl font-extrabold font-mono text-teal-400 block mb-2">15:00</span>
+                <div class="space-x-2">
+                  <button onclick="toggleTimer()" id="timerBtn" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-lg transition">Start</button>
+                  <button onclick="resetTimer()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-2 rounded-lg transition">Reset</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saved Log Table -->
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+              <h3 class="font-bold text-base text-slate-900 mb-2">📈 My Saved Recovery Log</h3>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-600 border-b border-slate-200">
+                      <th class="p-2">Date</th>
+                      <th class="p-2">Sleep</th>
+                      <th class="p-2">Stiffness</th>
+                      <th class="p-2">Liveliness</th>
+                      <th class="p-2">Pain</th>
+                      <th class="p-2">Envelope</th>
+                    </tr>
+                  </thead>
+                  <tbody id="logTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- VIEW 2: PROFESSIONAL CLINICAL MONOGRAPH & SCIENCE (n=20) -->
+  <!-- ======================================================== -->
+  <div id="viewMonograph" class="view-container hidden bg-slate-950 text-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+      <!-- Monograph Header -->
+      <div class="border-b border-slate-800 pb-8">
+        <div class="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-500/30 rounded-md px-3 py-1 text-xs mono text-teal-400 mb-4">
+          <span>TECHNICAL WHITE PAPER & LITERATURE REVIEW • v2.4</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+          The "Envelope of Repair": A Mechanobiological Framework for Intervertebral Disc & Spinal Joint Preservation
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 leading-relaxed mb-4">
+          Why morphological and metabolic imaging findings correlate poorly with axial nociception, how intradiscal hydrostatic pressure governs trans-endplate solute transport, and the molecular rationale for isometric mechanotransduction and targeted orthobiologic co-factors.
+        </p>
+        <div class="flex flex-wrap gap-6 text-xs text-slate-400 border-t border-slate-800/80 pt-4 mono">
+          <div><strong class="text-slate-200">Authors:</strong> D.F. Lui FRCS (Tr&Orth), J. Bernard FRCS (Tr&Orth), A. Patankar</div>
+          <div><strong class="text-slate-200">Institutions:</strong> St George's London • Mater Private Dublin • Advanced London Spine Surgery</div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: BIOMECHANICS & ALL 4 KEY DIAGRAMS -->
+      <section class="space-y-12">
+        <div class="border-l-2 border-teal-500 pl-4">
+          <span class="text-xs mono uppercase text-teal-400">Section 01 • In Vivo Biomechanics & Postural Physics</span>
+          <h3 class="text-2xl font-bold text-white mt-1">Telemetry, Lever Arms, Posture & The Cone of Economy</h3>
+        </div>
+
+        <!-- 1. NACHEMSON LUMBAR TELEMETRY -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center">
+          <h4 class="font-bold text-white text-base mb-2">1. Intradiscal Pressure Telemetry: Nachemson (1976) vs. Wilke et al. (1999)</h4>
+          <p class="text-xs text-slate-400 mb-6">Normalized against relaxed standing (100%). Unsupported slouched sitting (140–185%) and forward flexion with a load (275%+) skyrocket disc stress[cite: 5].</p>
+          <div class="bg-white p-4 rounded-xl inline-block max-w-full">
+            <img src="image_3f5dbf.png" alt="Pressure on Lumbar Discs Based on Body Position" class="w-full h-auto rounded-lg shadow-md max-w-2xl mx-auto">
+          </div>
+          <p class="text-[11px] text-slate-500 mt-4">Source data: Nachemson (1976)[cite: 2] & Wilke et al. (1999)[cite: 3]. Graphic reference: Ergonomic Trends[cite: 5].</p>
+        </div>
+
+        <!-- 2. ERIK DALTON HEAD WEIGHT SHEAR -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center">
+          <h4 class="font-bold text-white text-base mb-2">2. Cervical Leverage: The 12 lb. to 42 lb. Forward Head Shear Effect</h4>
+          <p class="text-xs text-slate-400 mb-6">As the head translates forward, the effective gravitational load multiplier on the cervicothoracic junction surges from 12 lbs to 42 lbs[cite: 9].</p>
+          <div class="bg-white p-4 rounded-xl inline-block max-w-full">
+            <img src="headforwardposture.jpg" alt="Head Weight Based on Posture - Erik Dalton" class="w-full h-auto rounded-lg shadow-md max-w-2xl mx-auto">
+          </div>
+          <p class="text-[11px] text-slate-500 mt-4">Credit: erikdalton.com[cite: 9]. Illustrating sagittal plane mechanical load magnification.</p>
+        </div>
+
+        <!-- 3. UPPER CROSSED SYNDROME -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center">
+          <h4 class="font-bold text-white text-base mb-2">3. Janda's Upper Crossed Syndrome: Muscle Imbalances & Trigger Points</h4>
+          <p class="text-xs text-slate-400 mb-6">Reciprocal inhibition couples tight upper traps/levator scapula and pectorals with weak deep neck flexors and lower traps[cite: 10].</p>
+          <div class="bg-white p-4 rounded-xl inline-block max-w-full">
+            <img src="uppercrosssyndrome.png" alt="Upper Crossed Syndrome Muscle Imbalances" class="w-full h-auto rounded-lg shadow-md max-w-xl mx-auto">
+          </div>
+          <p class="text-[11px] text-slate-500 mt-4">Mapping reciprocal hypertonicity and arthrokinetic dysfunction in the cervical quarter.</p>
+        </div>
+
+        <!-- 4. CONE OF ECONOMY -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center">
+          <h4 class="font-bold text-white text-base mb-2">4. Dubousset's "Cone of Economy" (Early 1970s)</h4>
+          <p class="text-xs text-slate-400 mb-6">The axial skeleton aligned in balance with the feet, lower limbs, and pelvis to minimize muscular energy expenditure.</p>
+          <div class="bg-white p-4 rounded-xl inline-block max-w-full">
+            <img src="coneofeconomy.png" alt="Cone of Economy Jean Felix Dubousset" class="w-full h-auto rounded-lg shadow-md max-w-xl mx-auto">
+          </div>
+          <p class="text-[11px] text-slate-500 mt-4"> Described by Jean Felix Dubousset: balancing postural equilibrium within minimal energetic boundaries.</p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: SPECT/CT PREVALENCE DATA -->
+      <section class="space-y-6">
+        <div class="border-l-2 border-teal-500 pl-4">
+          <span class="text-xs mono uppercase text-teal-400">Section 02 • Pathophysiological Continuum</span>
+          <h3 class="text-2xl font-bold text-white mt-1">The "Bernard Theorem" & Our 433-Patient SPECT/CT Prevalence Data</h3>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-xs sm:text-sm text-slate-300 space-y-4">
+          <p>
+            In our analysis of 1,182 consecutive whole-body SPECT/CT scans (433 strictly asymptomatic oncology patients without bone metastases), focal osteoblastic uptake co-localizing with structural degeneration (normalized against baseline <strong>ASIS/iliac crest</strong> trabecular counts) was present in <strong>89% of pain-free individuals</strong>[cite: 5]:
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mono text-center">
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="block text-slate-400 text-xs">31–40 yrs</span><strong class="text-teal-400 text-base">56%</strong></div>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="block text-slate-400 text-xs">41–50 yrs</span><strong class="text-teal-400 text-base">68%</strong></div>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="block text-slate-400 text-xs">51–60 yrs</span><strong class="text-amber-400 text-base">89%</strong></div>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="block text-slate-400 text-xs">61–70 yrs</span><strong class="text-rose-400 text-base">95%</strong></div>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="block text-slate-400 text-xs">71–80 yrs</span><strong class="text-rose-400 text-base">92%</strong></div>
+          </div>
+          <p class="text-xs text-slate-400">
+            $\chi^2 = 48.076, p = 3.43 \times 10^{-9}$. Proves that "hot" subchondral turnover represents physiological remodeling within the repair envelope, not an automatic surgical pain generator.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 5: REFERENCES (n=20) -->
+      <section class="space-y-4 border-t border-slate-800 pt-8">
+        <h3 class="text-xl font-bold text-white mono">05 • Peer-Reviewed Literature & Key References (n=20)</h3>
+        <ol class="list-decimal list-inside space-y-2 text-xs text-slate-400 leading-relaxed">
+          <li><strong>Nachemson A.</strong> The load on lumbar disks in different positions of the body. <em>Clin Orthop Relat Res.</em> 1966;45:107-122[cite: 1].</li>
+          <li><strong>Nachemson AL.</strong> The lumbar spine: an orthopaedic challenge. <em>Spine (Phila Pa 1976).</em> 1976;1(1):59-71[cite: 2].</li>
+          <li><strong>Wilke HJ, Neef P, Caimi M, Hoogland T, Claes LE.</strong> New in vivo measurements of pressures in the intervertebral disc in daily life. <em>Spine (Phila Pa 1976).</em> 1999;24(8):755-762[cite: 3].</li>
+          <li><strong>Urban JP, Smith S, Fairbank JC.</strong> Nutrition of the intervertebral disc. <em>Spine (Phila Pa 1976).</em> 2004;29(23):2700-2709[cite: 4].</li>
+          <li><strong>Dye SF.</strong> The knee as a biologic transmission with an envelope of function: a theory. <em>Clin Orthop Relat Res.</em> 1996;(325):10-18[cite: 5].</li>
+          <li><strong>Sivan SS, Tsitron E, Wachtel E, et al.</strong> Aggrecan turnover in human intervertebral disc. <em>J Biol Chem.</em> 2006;281(19):13009-13014.</li>
+          <li><strong>Brinjikji W, Luetmer PH, Comstock B, et al.</strong> Systematic literature review of imaging features of spinal degeneration. <em>AJNR Am J Neuroradiol.</em> 2015;36(4):811-816.</li>
+          <li><strong>Gornet MG, Peacock J, Claude J, et al.</strong> Magnetic resonance spectroscopy (MRS) can identify painful lumbar discs. <em>Eur Spine J.</em> 2019;28(4):674-687.</li>
+          <li><strong>Pfirrmann CW, Metzdorf A, Zanetti M, et al.</strong> Magnetic resonance classification of lumbar intervertebral disc degeneration. <em>Spine.</em> 2001;26(17):1873-1878.</li>
+          <li><strong>Weishaupt D, Zanetti M, Boos N, Hodler J.</strong> MR imaging and CT in osteoarthritis of the lumbar facet joints. <em>Skeletal Radiol.</em> 1999;28(4):215-219.</li>
+          <li><strong>Rajasekaran S, Babu JN, Arun R, et al.</strong> A study of diffusion in human lumbar discs. <em>Spine (Phila Pa 1976).</em> 2004;29(23):2654-2667.</li>
+          <li><strong>Ferguson SJ, Ito K, Nolte LP.</strong> Fluid flow and convective transport of solutes within the intervertebral disc. <em>J Biomech.</em> 2004;37(2):213-221.</li>
+          <li><strong>Belavý DL, Quittner MJ, Ridgers N, et al.</strong> Running exercise strengthens the intervertebral disc. <em>Sci Rep.</em> 2017;7:45975.</li>
+          <li><strong>Ramos G, Martin W.</strong> Effects of vertebral axial decompression on intradiscal pressure. <em>J Neurosurg.</em> 1994;81(3):350-353.</li>
+          <li><strong>Rio E, Kidgell D, Purdam C, et al.</strong> Isometric exercise induces analgesia and reduces inhibition in patellar tendinopathy. <em>Br J Sports Med.</em> 2015;49(19):1277-1283.</li>
+          <li><strong>Shaw G, Lee-Barthel A, Ross ML, Wang B, Baar K.</strong> Vitamin C-enriched gelatin supplementation before intermittent activity augments collagen synthesis. <em>Am J Clin Nutr.</em> 2017;105(1):136-143.</li>
+          <li><strong>Parisien M, Lima LV, Dagostino C, et al.</strong> Acute inflammatory response via neutrophil activation protects against the development of chronic pain. <em>Sci Transl Med.</em> 2022;14(644):eabj9954.</li>
+          <li><strong>Li Z, Li X, Chen C, et al.</strong> Melatonin and Nicotinamide Mononucleotide (NMN) attenuate intervertebral disc degeneration via SIRT1/PGC-1$\alpha$. <em>Osteoarthritis Cartilage.</em> 2020;28(7):966-978.</li>
+          <li><strong>Wuertz K, Quero L, Sekiguchi M, et al.</strong> The red wine polyphenol resveratrol shows promising potential for nucleus pulposus-mediated pain. <em>Spine.</em> 2011;36(21):E1373-E1384.</li>
+          <li><strong>Novais EJ, Tran VA, Johnston SN, et al.</strong> Long-term treatment with senolytic drugs Dasatinib and Quercetin ameliorates age-dependent intervertebral disc degeneration. <em>Nat Commun.</em> 2021;12(1):5213.</li>
+        </ol>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 py-10 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <strong class="text-white">The Spine Preservation Blueprint</strong> • Mr. Darren F. Lui & Mr. Jason Bernard
+      </div>
+      <div class="text-slate-500">
+        Unified Clinical & Patient Portal • London & Dublin • © 2026
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC FOR TAB SWITCHING & APP -->
+  <script>
+    function switchView(viewName) {
+      const pView = document.getElementById('viewPatient');
+      const mView = document.getElementById('viewMonograph');
+      const nPatient = document.getElementById('navPatient');
+      const nMono = document.getElementById('navMonograph');
+
+      if (viewName === 'patient') {
+        pView.classList.remove('hidden');
+        mView.classList.add('hidden');
+        nPatient.className = "px-4 py-2 rounded-lg bg-teal-500 text-slate-950 font-semibold transition shadow";
+        nMono.className = "px-4 py-2 rounded-lg text-slate-300 hover:text-white transition";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        pView.classList.add('hidden');
+        mView.classList.remove('hidden');
+        nMono.className = "px-4 py-2 rounded-lg bg-teal-500 text-slate-950 font-semibold transition shadow";
+        nPatient.className = "px-4 py-2 rounded-lg text-slate-300 hover:text-white transition";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    let timerSeconds = 900, timerInterval = null;
+    function toggleTimer() {
+      const btn = document.getElementById('timerBtn');
+      if (timerInterval) { clearInterval(timerInterval); timerInterval = null; btn.innerText = "Start"; }
+      else {
+        btn.innerText = "Pause";
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            document.getElementById('timerDisplay').innerText = `${String(Math.floor(timerSeconds/60)).padStart(2,'0')}:${String(timerSeconds%60).padStart(2,'0')}`;
+          } else { clearInterval(timerInterval); timerInterval = null; alert("15-Minute 90/90 Psoas Decompression Complete!"); }
+        }, 1000);
+      }
+    }
+    function resetTimer() { clearInterval(timerInterval); timerInterval = null; timerSeconds = 900; document.getElementById('timerDisplay').innerText = "15:00"; document.getElementById('timerBtn').innerText = "Start"; }
+
+    function calculateCurrentScore() {
+      const sleep = parseFloat(document.getElementById('sleepInput').value);
+      const stiff = parseInt(document.getElementById('stiffInput').value);
+      const live = parseInt(document.getElementById('liveInput').value);
+      const pain = parseInt(document.getElementById('painInput').value);
+      let score = 50 + (sleep - 6.5) * 7 + (live - 5) * 2.5 - (stiff - 3) * 3.5 - (pain - 2) * 5;
+      return Math.max(10, Math.min(99, Math.round(score)));
+    }
+
+    function updateEnvelope() {
+      const sleep = parseFloat(document.getElementById('sleepInput').value);
+      const stiff = parseInt(document.getElementById('stiffInput').value);
+      const live = parseInt(document.getElementById('liveInput').value);
+      const pain = parseInt(document.getElementById('painInput').value);
+      document.getElementById('sleepVal').innerText = sleep + " hrs";
+      document.getElementById('stiffVal').innerText = stiff + " / 10";
+      document.getElementById('liveVal').innerText = live + " / 10";
+      document.getElementById('painVal').innerText = pain + " / 10";
+      const score = calculateCurrentScore();
+      document.getElementById('envelopeScore').innerText = score + "%";
+      document.getElementById('envelopeBar').style.width = score + "%";
+    }
+
+    function saveDailyLog() {
+      const entry = { date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }), sleep: document.getElementById('sleepInput').value + 'h', stiff: document.getElementById('stiffInput').value + '/10', live: document.getElementById('liveInput').value + '/10', pain: document.getElementById('painInput').value + '/10', score: calculateCurrentScore() + '%' };
+      const logs = JSON.parse(localStorage.getItem('spineLogs') || '[]');
+      logs.unshift(entry);
+      localStorage.setItem('spineLogs', JSON.stringify(logs.slice(0, 30)));
+      renderLogs();
+    }
+
+    function renderLogs() {
+      const logs = JSON.parse(localStorage.getItem('spineLogs') || '[]');
+      const tbody = document.getElementById('logTableBody');
+      if (!logs.length) { tbody.innerHTML = `<tr><td colspan="6" class="p-3 text-center text-slate-400">No entries saved yet.</td></tr>`; return; }
+      tbody.innerHTML = logs.map(l => `<tr><td class="p-2 font-semibold">${l.date}</td><td class="p-2">${l.sleep}</td><td class="p-2 text-amber-700">${l.stiff}</td><td class="p-2 text-teal-700">${l.live}</td><td class="p-2 text-rose-700">${l.pain}</td><td class="p-2 font-bold">${l.score}</td></tr>`).join('');
+    }
+
+    function downloadNudgeAlarms() {
+      const url = "https://preeminent-choux-5fabf2.netlify.app/";
+      const ics = ["BEGIN:VCALENDAR","VERSION:2.0","BEGIN:VEVENT","SUMMARY:💊 Spine App: Morning Vit C","DESCRIPTION:"+url,"DTSTART:20261018T080000","RRULE:FREQ=DAILY;COUNT=30","END:VEVENT","END:VCALENDAR"].join("\r\n");
+      const blob = new Blob([ics], { type: 'text/calendar' });
+      const link = document.createElement('a'); link.href = window.URL.createObjectURL(blob); link.download = 'Spine_Nudges.ics'; link.click();
+    }
+
+    updateEnvelope(); renderLogs();
+  </script>
+</body>
+</html>
