@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Spine Preservation Blueprint | Mr. Darren F. Lui & Mr. Jason Bernard</title>
+  
+  <!-- MOBILE APP PWA TAGS (Restored) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="manifest" href="manifest.json">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f766e 100%); }
+    input[type=range] { accent-color: #0d9488; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- TOP NAVIGATION -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-teal-500 flex items-center justify-center font-bold text-slate-900 text-lg">SP</div>
+        <div>
+          <span class="font-bold tracking-tight text-base sm:text-lg">SpinePreservation<span class="text-teal-400">.org</span></span>
+          <span class="hidden md:inline-block text-xs text-slate-400 ml-2 border-l border-slate-700 pl-2">Consultant Spinal Surgery & Mechanobiology</span>
+        </div>
+      </div>
+      <nav class="hidden lg:flex space-x-6 text-sm font-medium text-slate-300">
+        <a href="#app-demo" class="text-teal-400 hover:text-teal-300 font-semibold">Daily Tracker</a>
+        <a href="#magnesium-protocol" class="text-emerald-400 hover:text-emerald-300 font-semibold">6-Month Battery Protocol</a>
+        <a href="#pillars" class="hover:text-white">Core Pillars</a>
+        <a href="#exercise" class="hover:text-white">Exercise Matrix</a>
+        <a href="#biochemistry" class="hover:text-white">Meds & Stack</a>
+        <a href="#trial" class="hover:text-white">Clinical Study</a>
+      </nav>
+      <div class="flex items-center space-x-2">
+        <button onclick="downloadNudgeAlarms()" class="bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 font-semibold text-xs px-3 py-2 rounded-lg transition">
+          🔔 Set Phone Nudges
+        </button>
+        <a href="#app-demo" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold text-xs sm:text-sm px-3.5 py-2 rounded-lg transition">
+          Log Today
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="gradient-hero text-white py-14 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center space-x-2 bg-teal-500/20 border border-teal-400/30 rounded-full px-3.5 py-1 text-xs font-medium text-teal-300 mb-5">
+          <span>Consultant-Led Digital Therapeutic & Joint Preservation</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-5">
+          Beyond the Scan: The <span class="text-teal-400">Repair Envelope</span> Blueprint for Your Spine.
+        </h1>
+        <p class="text-base sm:text-xl text-slate-300 leading-relaxed mb-6">
+          Our research shows that up to <strong>89% of completely pain-free adults</strong> have active "wear and tear" on advanced bone scans. Structural degeneration does not equal pain. Pain happens when daily mechanical load outpaces your body’s biological capacity for overnight repair.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-6">
+          <a href="#magnesium-protocol" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition">
+            🔋 View 6-Month Magnesium & Collagen Refill Timeline
+          </a>
+          <button onclick="downloadNudgeAlarms()" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-white/20 transition">
+            📲 Install 8am / 1:30pm / 8pm Phone Nudges
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-4 items-center text-sm text-slate-300 border-t border-slate-700/80 pt-5">
+          <div><strong class="text-white">Mr. Darren F. Lui</strong> FRCS (Tr&Orth) — London & Dublin</div>
+          <span class="hidden sm:inline text-slate-600">•</span>
+          <div><strong class="text-white">Mr. Jason Bernard</strong> FRCS (Tr&Orth) — London</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE APP PROTOTYPE SECTION -->
+  <section id="app-demo" class="py-14 bg-slate-100 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-1 rounded-full">Interactive Patient Web-App</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">Daily "Repair Envelope" Tracker & Nudge System</h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base">Log your daily sleep, stiffness, liveliness, and rechargers in 15 seconds. Your scores save directly to your phone so you can track your 6-week recovery curve.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT COLUMN: DAILY CHECK-IN & ENVELOPE SCORE -->
+        <div class="lg:col-span-5 bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-8">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
+            <div>
+              <h3 class="font-bold text-lg text-slate-900">1. Daily Check-In</h3>
+              <p class="text-xs text-slate-500">Morning & Evening Feedback Loop</p>
+            </div>
+            <button onclick="downloadNudgeAlarms()" class="text-xs font-semibold bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 px-2.5 py-1.5 rounded-lg transition">
+              🔔 Get Daily Nudges
+            </button>
+          </div>
+
+          <!-- Sliders -->
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <label for="sleepInput" class="text-slate-700">Last Night's Flat Sleep (Osmotic Refill)</label>
+                <span id="sleepVal" class="font-bold text-teal-700">7.5 hrs</span>
+              </div>
+              <input id="sleepInput" type="range" min="4" max="10" step="0.5" value="7.5" class="w-full cursor-pointer" oninput="updateEnvelope()">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <label for="sleepQualInput" class="text-slate-700">Sleep Quality (Day 1 vs Day 30 Anchor)</label>
+                <span id="sleepQualVal" class="font-bold text-emerald-700">7 / 10</span>
+              </div>
+              <input id="sleepQualInput" type="range" min="1" max="10" step="1" value="7" class="w-full cursor-pointer" oninput="updateEnvelope()">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <label for="stiffInput" class="text-slate-700">How STIFF are you today? (1–10)</label>
+                <span id="stiffVal" class="font-bold text-amber-600">3 / 10</span>
+              </div>
+              <input id="stiffInput" type="range" min="1" max="10" step="1" value="3" class="w-full cursor-pointer" oninput="updateEnvelope()">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <label for="liveInput" class="text-slate-700">How LIVELY are you today? (1–10)</label>
+                <span id="liveVal" class="font-bold text-teal-600">7 / 10</span>
+              </div>
+              <input id="liveInput" type="range" min="1" max="10" step="1" value="7" class="w-full cursor-pointer" oninput="updateEnvelope()">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <label for="painInput" class="text-slate-700">What is your PAIN level today? (1–10)</label>
+                <span id="painVal" class="font-bold text-rose-600">2 / 10</span>
+              </div>
+              <input id="painInput" type="range" min="1" max="10" step="1" value="2" class="w-full cursor-pointer" oninput="updateEnvelope()">
+            </div>
+          </div>
+
+          <!-- Daily Checkboxes -->
+          <div class="mt-5 pt-4 border-t border-slate-100">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Today's Biological Rechargers & Load</h4>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <label class="flex items-center space-x-2.5 cursor-pointer">
+                <input type="checkbox" id="chkVitC1" checked onchange="updateEnvelope()" class="w-4 h-4 text-teal-600 rounded">
+                <span><strong>8:00 AM:</strong> 500mg Vitamin C + Morning NMN/NAD+</span>
+              </label>
+              <label class="flex items-center space-x-2.5 cursor-pointer">
+                <input type="checkbox" id="chkDecomp" checked onchange="updateEnvelope()" class="w-4 h-4 text-teal-600 rounded">
+                <span><strong>1:30 PM:</strong> 15-min 90/90 Psoas Decompression Refill</span>
+              </label>
+              <label class="flex items-center space-x-2.5 cursor-pointer">
+                <input type="checkbox" id="chkWalk" checked onchange="updateEnvelope()" class="w-4 h-4 text-teal-600 rounded">
+                <span><strong>Disc Pump:</strong> 20-min Brisk Walk (1.5–2 Hz) + Isometrics</span>
+              </label>
+              <label class="flex items-center space-x-2.5 cursor-pointer">
+                <input type="checkbox" id="chkVitC2" checked onchange="updateEnvelope()" class="w-4 h-4 text-teal-600 rounded">
+                <span><strong>8:00 PM:</strong> 500mg Vit C + <strong>Magnesium Bisglycinate</strong></span>
+              </label>
+              <label class="flex items-center space-x-2.5 cursor-pointer">
+                <input type="checkbox" id="chkFlexion" onchange="updateEnvelope()" class="w-4 h-4 text-rose-600 rounded">
+                <span class="text-rose-700"><strong>Overload Warning:</strong> Forward bending / sitting >2 hrs</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Envelope Gauge Output -->
+          <div class="mt-5 bg-slate-900 text-white rounded-xl p-5">
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Bernard Theorem Balance</span>
+              <span id="envelopeBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500 text-slate-950">Repairing (+Surplus)</span>
+            </div>
+            <div class="flex items-baseline space-x-2">
+              <span id="envelopeScore" class="text-4xl font-extrabold text-teal-400">88%</span>
+              <span class="text-xs text-slate-400">Repair Capacity vs. Load</span>
+            </div>
+            <div class="w-full bg-slate-700 h-2.5 rounded-full mt-2.5 overflow-hidden">
+              <div id="envelopeBar" class="bg-teal-400 h-full transition-all duration-300" style="width: 88%"></div>
+            </div>
+            <p id="envelopeAdvice" class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+              Optimal regeneration state: Your overnight cellular repair and osmotic disc hydration are outpacing daily mechanical wear.
+            </p>
+            <button onclick="saveDailyLog()" class="mt-4 w-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs sm:text-sm py-2.5 rounded-lg transition shadow">
+              💾 Save Today's Check-In to My Phone Log
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: DECOMPRESSION TIMER, 6-WEEK CYCLE & SAVED LOG -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Live 15-Minute 90/90 Decompression Timer & Lesson Card -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 90/90 Timer -->
+            <div class="bg-slate-900 text-white rounded-2xl p-5 shadow-md flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-teal-400">1:30 PM Mid-Day Nudge Tool</span>
+                <h4 class="text-base font-bold mt-1">15-Min 90/90 Psoas Refill Timer</h4>
+                <p class="text-xs text-slate-300 mt-1">Lie flat on the floor with calves resting on a chair (90/90). Slackens the psoas bowstring so the disc sucks in fresh water and oxygen.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
+                <span id="timerDisplay" class="text-3xl font-extrabold font-mono text-teal-400">15:00</span>
+                <div class="space-x-1.5">
+                  <button onclick="toggleTimer()" id="timerBtn" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs px-3 py-2 rounded-lg transition">Start 15m</button>
+                  <button onclick="resetTimer()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-2.5 py-2 rounded-lg transition">Reset</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lesson of the Day -->
+            <div class="bg-gradient-to-br from-teal-900 to-slate-900 text-white rounded-2xl p-5 shadow-md flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Lesson of the Day</span>
+                  <button onclick="nextLesson()" class="text-xs bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded transition">Next →</button>
+                </div>
+                <h4 id="lessonTitle" class="text-sm sm:text-base font-bold text-white mt-1.5">Day 1: The Ankle Sprain Clock</h4>
+                <p id="lessonBody" class="text-xs text-slate-200 leading-relaxed mt-1">
+                  An annular disc tear is identical to an ankle sprain. Even when sharp pain fades at Week 4, weak Type III scar tissue takes 3 to 6 months to remodel into tough Type I collagen.
+                </p>
+              </div>
+              <div class="mt-3 pt-2 border-t border-white/10 text-[11px] text-teal-200">
+                💡 Tip: Tap "Next" to browse all clinic biomechanics pearls.
+              </div>
+            </div>
+          </div>
+
+          <!-- 6-Week Periodised Selector -->
+          <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+            <h3 class="font-bold text-lg text-slate-900 mb-1">2. Six-Week Periodised Rehabilitation Cycle</h3>
+            <p class="text-xs text-slate-500 mb-4">Aligned with the histological proliferation and remodeling clock of collagen and tendons.</p>
+
+            <div class="grid grid-cols-3 gap-2 mb-4">
+              <button onclick="setPhase(1)" id="tab1" class="py-2 px-3 rounded-xl font-semibold text-xs sm:text-sm bg-teal-600 text-white shadow-sm transition">
+                Weeks 1–2<br><span class="font-normal text-xs opacity-90">Unload & Quench</span>
+              </button>
+              <button onclick="setPhase(2)" id="tab2" class="py-2 px-3 rounded-xl font-semibold text-xs sm:text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                Weeks 3–4<br><span class="font-normal text-xs opacity-75">Isometric Guy-Wires</span>
+              </button>
+              <button onclick="setPhase(3)" id="tab3" class="py-2 px-3 rounded-xl font-semibold text-xs sm:text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                Weeks 5–6<br><span class="font-normal text-xs opacity-75">Load Expansion</span>
+              </button>
+            </div>
+
+            <div id="phaseContent" class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3"></div>
+          </div>
+
+          <!-- Saved Patient Log History Table -->
+          <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="font-bold text-base text-slate-900">📈 My Saved Recovery Log (Stored on This Device)</h3>
+                <p class="text-xs text-slate-500">Tracks your Sleep, Stiffness, Liveliness, Pain & Envelope % over your 6-week cycle.</p>
+              </div>
+              <button onclick="clearLogs()" class="text-xs text-slate-400 hover:text-rose-600">Clear History</button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 text-slate-600 border-b border-slate-200">
+                    <th class="p-2">Date</th>
+                    <th class="p-2">Sleep</th>
+                    <th class="p-2">Sleep Qual</th>
+                    <th class="p-2">Stiffness</th>
+                    <th class="p-2">Liveliness</th>
+                    <th class="p-2">Pain</th>
+                    <th class="p-2">Envelope</th>
+                  </tr>
+                </thead>
+                <tbody id="logTableBody" class="divide-y divide-slate-100 text-slate-700">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: THE 6-MONTH MAGNESIUM & COLLAGEN BATTERY PROTOCOL -->
+  <section id="magnesium-protocol" class="py-16 bg-emerald-950 text-white border-b border-emerald-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider bg-emerald-800 text-emerald-200 px-3 py-1 rounded-full">The 6-Month Tissue Refill Protocol • Why Consistency Is Key</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold mt-3">Your Magnesium & Disc Collagen Took Years to Run Low. Expecting to Refill It in Days Is Unrealistic.</h2>
+        <p class="text-emerald-200 mt-3 text-sm sm:text-base leading-relaxed">
+          Just like an annular disc tear takes 3 to 6 months to remodel weak Type III scar tissue into strong Type I collagen, cellular magnesium stores in your spinal bones and muscles require a structured 6-month refill timeline.
+        </p>
+      </div>
+
+      <!-- 5-Stage Battery Timeline -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+        <!-- Week 0 -->
+        <div class="bg-emerald-900/50 border border-emerald-800 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase text-rose-400">Week 0</span>
+            <h4 class="font-bold text-base mt-1">The Refill Begins</h4>
+            <p class="text-xs text-emerald-200 mt-2">Depleted bone & muscle reservoirs; paraspinal muscle guarding, high morning stiffness, and fragmented sleep.</p>
+          </div>
+          <div class="mt-5">
+            <div class="w-full h-7 bg-slate-900 rounded-lg p-1 border border-slate-700 flex items-center">
+              <div class="bg-rose-500 h-full rounded w-[15%]"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-1 block">Cellular Reservoir: ~15%</span>
+          </div>
+        </div>
+
+        <!-- Weeks 1-2 -->
+        <div class="bg-emerald-900/50 border border-emerald-800 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase text-amber-400">Weeks 1–2</span>
+            <h4 class="font-bold text-base mt-1">"Sleep Onset" Phase</h4>
+            <p class="text-xs text-emerald-200 mt-2"><strong>Nights 5–10:</strong> Falling asleep faster. <strong>Week 2:</strong> Calf cramps, eye twitches, and acute paraspinal spasms begin to fade.</p>
+          </div>
+          <div class="mt-5">
+            <div class="w-full h-7 bg-slate-900 rounded-lg p-1 border border-slate-700 flex items-center">
+              <div class="bg-amber-500 h-full rounded w-[35%]"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-1 block">Cellular Reservoir: ~35%</span>
+          </div>
+        </div>
+
+        <!-- Weeks 3-4 -->
+        <div class="bg-emerald-900/70 border-2 border-amber-400 rounded-2xl p-5 flex flex-col justify-between relative">
+          <div class="absolute -top-3 right-3 bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">
+            Rate Sleep Day 1 & Day 30
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase text-amber-300">Weeks 3–4</span>
+            <h4 class="font-bold text-base mt-1">"Deep Sleep" Phase</h4>
+            <p class="text-xs text-emerald-100 mt-2">Deeper slow-wave sleep and fewer 3 AM wake-ups—maximizing nocturnal Growth Hormone release and osmotic disc hydration.</p>
+          </div>
+          <div class="mt-5">
+            <div class="w-full h-7 bg-slate-900 rounded-lg p-1 border border-slate-700 flex items-center">
+              <div class="bg-yellow-400 h-full rounded w-[60%]"></div>
+            </div>
+            <span class="text-[11px] text-amber-300 mt-1 block font-semibold">Cellular Reservoir: ~60%</span>
+          </div>
+        </div>
+
+        <!-- Months 2-3 -->
+        <div class="bg-emerald-900/50 border border-emerald-800 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase text-lime-400">Months 2–3</span>
+            <h4 class="font-bold text-base mt-1">"Calm & Remodeling"</h4>
+            <p class="text-xs text-emerald-200 mt-2">Calmer dorsal horn pain baseline, steadier mood, and active remodeling of weak Type III scar into Type I collagen.</p>
+          </div>
+          <div class="mt-5">
+            <div class="w-full h-7 bg-slate-900 rounded-lg p-1 border border-slate-700 flex items-center">
+              <div class="bg-lime-500 h-full rounded w-[82%]"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-1 block">Cellular Reservoir: ~82%</span>
+          </div>
+        </div>
+
+        <!-- Months 4-6 -->
+        <div class="bg-emerald-900/50 border border-emerald-800 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase text-emerald-400">Months 4–6</span>
+            <h4 class="font-bold text-base mt-1">"Maintenance & Protection"</h4>
+            <p class="text-xs text-emerald-200 mt-2">Full bone & muscle saturation achieved; mature Type I collagen cross-linking and widened joint Repair Envelope.</p>
+          </div>
+          <div class="mt-5">
+            <div class="w-full h-7 bg-slate-900 rounded-lg p-1 border border-slate-700 flex items-center">
+              <div class="bg-emerald-400 h-full rounded w-full"></div>
+            </div>
+            <span class="text-[11px] text-emerald-300 mt-1 block font-semibold">Cellular Reservoir: 100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why This Matters in Spine Surgery (2-Column Breakdown) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-emerald-900/40 border border-emerald-800 rounded-2xl p-6 sm:p-7">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-3xl font-extrabold text-emerald-400">60%</span>
+            <span class="text-xs sm:text-sm text-emerald-100 font-medium">of UK adults don't get enough magnesium from food alone—and serum blood tests miss it.</span>
+          </div>
+          <ul class="space-y-3 text-xs sm:text-sm text-emerald-100">
+            <li class="flex items-start space-x-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>The 1% vs. 99% Rule:</strong> Only 1% of your body's magnesium circulates in your blood. The other <strong>99% lives inside your bone (~60%) and skeletal muscle (~39%)</strong>—which is why replenishing deep tissue stores takes months, not days.</span>
+            </li>
+            <li class="flex items-start space-x-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>Daily Depleters:</strong> Stress, surgical recovery, caffeine, alcohol, and sweat drain intracellular magnesium every day. Stop topping up, and tissue levels slide back within weeks.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-emerald-900/40 border border-emerald-800 rounded-2xl p-6 sm:p-7">
+          <h3 class="font-bold text-lg text-white mb-3">Why We Prescribe Magnesium <em>Bisglycinate</em> (300–400mg at Night)</h3>
+          <p class="text-xs sm:text-sm text-emerald-100 leading-relaxed mb-3">
+            Avoid cheap supermarket Magnesium Oxide (poorly absorbed). Binding elemental magnesium to the amino acid <strong>Glycine</strong> hits four spinal targets simultaneously:
+          </p>
+          <ul class="space-y-2 text-xs text-emerald-200 list-disc list-inside">
+            <li><strong>Releases Paraspinal Muscle Spasm:</strong> Acts as a physiological calcium-channel blocker at the muscle spindle so tight multifidus and erector spinae fibres can unbind and relax.</li>
+            <li><strong>Plugs the Dorsal Horn Pain Gate:</strong> Blocks spinal NMDA glutamate receptors to calm nerve "wind-up" and central sensitization.</li>
+            <li><strong>Supplies Glycine for Disc Collagen & Sleep:</strong> Every 3rd amino acid in Type I disc collagen is <em>Glycine</em>—and glycine lowers core body temperature to trigger deep slow-wave sleep.</li>
+            <li><strong>Activates Vitamin D3:</strong> Without sufficient magnesium, Vitamin D3 cannot be converted into its active hormone form to protect vertebral endplates.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE 3 CORE PILLARS -->
+  <section id="pillars" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-3xl font-bold text-slate-900">The Mechanobiology of Spine Preservation</h2>
+      <p class="text-slate-600 mt-2">Why standard physiotherapy stretches fail—and how to keep your daily mechanical work inside your cellular capacity for repair.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
+        <div class="w-11 h-11 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg mb-4">01</div>
+        <h3 class="font-bold text-xl text-slate-900 mb-2">The "Ankle Sprain" Clock</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          The outer ring of your disc (<em>annulus fibrosus</em>) is built from criss-crossing sheets of Type I collagen—just like your ankle ligaments. Even when acute spasm fades at Week 3, weak Type III scar tissue takes <strong>3 to 6 months</strong> to remodel into strong Type I collagen.
+        </p>
+        <div class="text-xs bg-amber-50 border border-amber-200 text-amber-900 p-3 rounded-lg">
+          <strong>Clinical Rule:</strong> Respect the 3–6 month protection window before resuming heavy axial impact or running.
+        </div>
+      </div>
+
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
+        <div class="w-11 h-11 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center font-bold text-lg mb-4">02</div>
+        <h3 class="font-bold text-xl text-slate-900 mb-2">Eliminate the #1 Enemy: Bending Forward</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          Bending forward (lumbar flexion) just 20–30 degrees turns your upper body into a heavy class-1 lever arm. Even without holding a weight, forward bending <strong>triples intradiscal pressure</strong> and wedges the fluid nucleus straight backward into the healing posterior tear.
+        </p>
+        <div class="text-xs bg-rose-50 border border-rose-200 text-rose-900 p-3 rounded-lg">
+          <strong>Clinical Rule:</strong> Master the <strong>Hip Hinge</strong>. Bend at the hips and knees while keeping the lumbar spine neutral.
+        </div>
+      </div>
+
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
+        <div class="w-11 h-11 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-lg mb-4">03</div>
+        <h3 class="font-bold text-xl text-slate-900 mb-2">Feeding an Avascular Disc</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          Adult discs have <strong>no blood vessels</strong>. They breathe oxygen and flush out burning lactic acid through microscopic pores in the vertebral endplate. Static sitting clamps these pores shut, causing hypoxia and acidosis.
+        </p>
+        <div class="text-xs bg-blue-50 border border-blue-200 text-blue-900 p-3 rounded-lg">
+          <strong>Clinical Rule:</strong> Combine 8 hrs flat sleep, a 15-min afternoon <strong>90/90 Psoas Refill</strong>, and 1.5 Hz brisk walking pumps.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXERCISE MATRIX -->
+  <section id="exercise" class="py-16 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-400">Scientific Exercise Prescription</span>
+        <h2 class="text-3xl font-bold mt-2">Running vs. Cycling vs. Swimming vs. Isometrics</h2>
+        <p class="text-slate-400 mt-2 text-sm sm:text-base">Moving beyond "do whatever doesn't hurt." Here is how each modality loads the intervertebral disc, facet joints, and spinal tendons.</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-800">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-800/90 text-slate-300 border-b border-slate-700">
+              <th class="p-4 font-semibold">Modality</th>
+              <th class="p-4 font-semibold">Biomechanical Effect on Disc & Facets</th>
+              <th class="p-4 font-semibold">Clinical Prescription</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 bg-slate-900/60">
+            <tr>
+              <td class="p-4 font-bold text-teal-400 whitespace-nowrap">1. Brisk Walking</td>
+              <td class="p-4 text-slate-300">Gentle sinusoidal pressure wave (~1.5–2 Hz) acts as a convective pump—squeezing lactic acid out and drawing oxygen and glucose across the endplates.</td>
+              <td class="p-4 text-slate-200"><strong>Gold Standard from Day 1.</strong> 20–30 mins twice daily on flat ground with an upright chest.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-amber-400 whitespace-nowrap">2. Running</td>
+              <td class="p-4 text-slate-300">Long-term runners develop <em>thicker, more hydrated discs</em> (higher glycosaminoglycans)—<strong>but</strong> high impact peaks will tear fragile Type III collagen during acute healing.</td>
+              <td class="p-4 text-slate-200"><strong>Avoid for 3–6 months</strong> after an acute annular tear. Reintroduce gradually (+10%/week max) once collagen matures.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-rose-400 whitespace-nowrap">3. Cycling</td>
+              <td class="p-4 text-slate-300">Drop-bar road bikes force sustained lumbar flexion—tilting the pelvis posteriorly and driving high pressure into posterior annular tears. (Unloads facet joints/stenosis).</td>
+              <td class="p-4 text-slate-200"><strong>Disc Pain:</strong> Avoid road bikes; use an upright or recumbent bike with neutral lordosis.<br><strong>Facet / Stenosis Pain:</strong> Excellent choice.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-sky-400 whitespace-nowrap">4. Swimming</td>
+              <td class="p-4 text-slate-300">Buoyancy removes gravity, but <strong>Breaststroke</strong> hyperextends and jams facet joints, while turning the neck to breathe in <strong>Freestyle</strong> creates rotational annular shear.</td>
+              <td class="p-4 text-slate-200"><strong>Avoid Breaststroke.</strong> Swim Backstroke, or do Front Crawl with a <strong>centre-mount swimmer's snorkel</strong> to eliminate twisting.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-emerald-400 whitespace-nowrap">5. Isometric Core & Tendons</td>
+              <td class="p-4 text-slate-300">"Bodybuilding" reps (sit-ups, twists) delaminate discs and irritate tendons. Core muscles are designed as isometric guy-wires; tendons heal best with heavy, slow isometric holds (1x/wk).</td>
+              <td class="p-4 text-slate-200"><strong>McGill Big 3</strong> (Side Plank, Bird-Dog, Modified Curl-up), Pallof presses, upright carries, and targeted isometric tendon holds.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIOCHEMISTRY & SMART PAIN RELIEF -->
+  <section id="biochemistry" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      
+      <!-- The 5-Day Fire Extinguisher Rule -->
+      <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
+        <span class="text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-100 px-3 py-1 rounded-full">Smart Pharmacology</span>
+        <h3 class="text-2xl font-bold text-slate-900 mt-3 mb-3">The "5-Day Fire Extinguisher" Rule: Paracetamol vs. NSAIDs</h3>
+        <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+          Why we avoid chronic anti-inflammatories during the 3–6 month remodeling window—and when a short rescue pulse is clinically justified.
+        </p>
+
+        <div class="space-y-4 text-sm">
+          <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+            <h4 class="font-bold text-emerald-950">🟢 Paracetamol (Safe for Collagen Repair)</h4>
+            <p class="text-emerald-900 mt-1 text-xs leading-relaxed">
+              Acts centrally in the nervous system to take the edge off pain so you can sleep 8 hours and complete your daily walking pump—<strong>without blocking peripheral Prostaglandin E2 or collagen synthesis</strong> in healing discs and tendons.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
+            <h4 class="font-bold text-amber-950">🟡 Short-Course Ibuprofen / Etoricoxib (The 5-Day Rescue Pulse)</h4>
+            <p class="text-amber-900 mt-1 text-xs leading-relaxed">
+              In an acute crisis (e.g., chemical sciatica from a disc leak or an acute facet joint flare stopping you from sleeping), a <strong>3-to-7 day pulse of Etoricoxib or Ibuprofen</strong> acts as a fire extinguisher to break the acute spasm cycle.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-rose-50 border border-rose-200">
+            <h4 class="font-bold text-rose-950">🔴 Chronic Daily NSAIDs (Sabotages the Repair Envelope)</h4>
+            <p class="text-rose-900 mt-1 text-xs leading-relaxed">
+              Taking NSAIDs week after week switches off COX-2 and Prostaglandin E2—the exact chemical triggers that instruct tenocytes, osteoblasts, and annular fibroblasts to build Type I collagen. Worse, it numbs your pain feedback loop so you overload an unhealed joint.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- The 3-Tier Nutraceutical Stack -->
+      <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-1 rounded-full">Cellular Orthobiologics</span>
+        <h3 class="text-2xl font-bold text-slate-900 mt-3 mb-3">The 3-Tier Spine Preservation Stack</h3>
+        <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+          Supplying the structural bricks and cellular energy required for avascular disc cells and tendons to repair overnight.
+        </p>
+
+        <div class="space-y-4 text-sm">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="flex justify-between items-center">
+              <h4 class="font-bold text-slate-900">Tier 1: Mandatory Structural Bricks</h4>
+              <span class="text-xs font-semibold text-teal-700">High Clinical Evidence</span>
+            </div>
+            <ul class="mt-2 space-y-1 text-xs text-slate-600 list-disc list-inside">
+              <li><strong>Vitamin C (500 mg Twice Daily — AM & PM):</strong> Essential co-factor for prolyl/lysyl hydroxylase to cross-link Type III into Type I collagen. Split dosing prevents plasma washout.</li>
+              <li><strong>Magnesium Bisglycinate (300–400mg Evening):</strong> Releases paraspinal spasm, blocks spinal NMDA pain receptors, activates Vitamin D, and provides Glycine for collagen & deep sleep.</li>
+              <li><strong>Vitamin D3 + K2 (MK-7):</strong> Directs calcium into bone while preventing calcification of the cartilaginous endplate "sieve."</li>
+              <li><strong>Hydrolysed Collagen Peptides (10–15g):</strong> Taken 45 mins prior to isometric loading to double tendon/ligament synthesis.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="flex justify-between items-center">
+              <h4 class="font-bold text-slate-900">Tier 2: Natural Pro-Resolving Support</h4>
+              <span class="text-xs font-semibold text-blue-700">Moderate Evidence</span>
+            </div>
+            <ul class="mt-2 space-y-1 text-xs text-slate-600 list-disc list-inside">
+              <li><strong>High-Dose Omega-3 (EPA/DHA 2–3g/day):</strong> Produces <em>resolvins</em> that clear residual inflammation without blunting collagen healing.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="flex justify-between items-center">
+              <h4 class="font-bold text-slate-900">Tier 3: Cellular Longevity & Senolytics</h4>
+              <span class="text-xs font-semibold text-purple-700">Emerging Orthobiologic</span>
+            </div>
+            <ul class="mt-2 space-y-1 text-xs text-slate-600 list-disc list-inside">
+              <li><strong>NMN or NR (Morning NAD+ Precursor):</strong> Restores glycolytic energy in hypoxic disc cells and fuels SIRT1/SIRT3 repair enzymes.</li>
+              <li><strong>Micronized Trans-Resveratrol:</strong> SIRT1 accelerator that inhibits cartilage-degrading MMP-13 and ADAMTS-4 enzymes.</li>
+              <li><strong>Quercetin Phytosome:</strong> Natural senolytic that clears acid-secreting senescent ("zombie") disc cells.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROSPECTIVE CLINICAL STUDY ENROLMENT -->
+  <section id="trial" class="py-16 bg-teal-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold uppercase tracking-wider bg-teal-800 text-teal-200 px-3 py-1 rounded-full">Prospective Clinical Research</span>
+      <h2 class="text-3xl font-bold mt-3 mb-4">Join the Spine Preservation Prospective Study</h2>
+      <p class="text-teal-100 text-sm sm:text-base leading-relaxed mb-8">
+        We are recruiting patients into our prospective observational cohort evaluating how daily adherence to the <strong>Repair Envelope Protocol</strong> (6-week periodised isometric rehab, 90/90 decompression, sleep optimization, and targeted nutraceuticals) improves pain, morning stiffness, and Oswestry Disability Index (ODI) scores.
+      </p>
+
+      <div class="bg-white text-slate-900 rounded-2xl p-6 sm:p-8 text-left shadow-xl max-w-2xl mx-auto">
+        <h3 class="font-bold text-lg mb-4">Digital Study Onboarding & E-Consent</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Patient Initials or Study ID</label>
+            <input type="text" id="studyIdInput" placeholder="e.g., J.S. or ALSS-042" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Primary Cohort Track</label>
+            <select id="studyTrackInput" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
+              <option>Track 1: Adult Disc / Facet Preservation (ODI)</option>
+              <option>Track 2: Adolescent / Postural Muscle Fatigue (PMFP v4.0)</option>
+            </select>
+          </div>
+        </div>
+        <label class="flex items-start space-x-3 text-xs text-slate-600 mb-6 cursor-pointer">
+          <input type="checkbox" id="consentChk" class="mt-0.5 w-4 h-4 text-teal-600 rounded">
+          <span>I consent to contribute my anonymised daily Stiffness, Liveliness, Sleep, Pain, and 6-week functional outcome scores to the consultant-led Spine Preservation Research Registry.</span>
+        </label>
+        <button onclick="enrolPatient()" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-3 rounded-xl transition">
+          Complete Enrolment & Download Daily Nudge Schedule
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 py-10 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <strong class="text-white">The Spine Preservation Blueprint</strong> • Mr. Darren F. Lui & Mr. Jason Bernard
+      </div>
+      <div class="text-slate-500">
+        Live App URL: <a href="https://preeminent-choux-5fabf2.netlify.app/" class="text-teal-400 underline">preeminent-choux-5fabf2.netlify.app</a> • © 2026
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+  <script>
+    const lessons = [
+      {
+        title: "Day 1: The Ankle Sprain Clock (Why 4 Weeks Is a Trap)",
+        body: "An annular disc tear is biologically identical to a severe ankle ligament sprain. Even when sharp pain fades at Week 3 or 4, your body has only bridged the gap with fragile Type III scar tissue. It takes 3 to 6 months of protected loading to remodel that patch into tough Type I collagen."
+      },
+      {
+        title: "Day 2: The Crowbar Effect (Why Bending Forward Triples Load)",
+        body: "Because your spine sits near the back of your torso, leaning forward just 20 degrees turns your upper body into a giant crowbar. This triples pressure inside L4/5 and L5/S1 and squeezes the gel center backward against your healing annular tear. Always hip-hinge!"
+      },
+      {
+        title: "Day 3: The 90/90 Psoas Secret (Why Lying Straight Isn't Enough)",
+        body: "When you lie flat with straight legs, your deep iliopsoas muscle pulls tight like a bowstring across your lower spine. Resting your calves up on a chair (90/90 position) for 15 minutes in the afternoon slackens the psoas, drops disc pressure to near zero, and sucks fresh oxygen into the disc."
+      },
+      {
+        title: "Day 4: The 6-Month Magnesium & Vitamin C Refill Rule",
+        body: "99% of your magnesium lives in bone and muscle, not blood—taking months to refill. Taking Magnesium Bisglycinate at night relaxes paraspinal spasm and supplies glycine for deep sleep, while split-dose Vitamin C (AM & PM) cross-links new disc collagen."
+      }
+    ];
+    let currentLesson = 0;
+
+    function nextLesson() {
+      currentLesson = (currentLesson + 1) % lessons.length;
+      document.getElementById('lessonTitle').innerText = lessons[currentLesson].title;
+      document.getElementById('lessonBody').innerText = lessons[currentLesson].body;
+    }
+
+    const phases = {
+      1: {
+        title: "Weeks 1–2: Unload, Quench & Sleep Onset Phase",
+        goal: "Protect fragile early fibrin/Type III collagen bridges, clear intradiscal lactic acidosis, and calm acute paraspinal spasm.",
+        items: [
+          "Decompression: 2x daily 15-minute 90/90 Psoas-Relaxed Unloading using the built-in timer above.",
+          "Convective Disc Pump: 2x 15–20 min flat brisk walks (1.5–2 steps/sec) to pump oxygen across the endplates.",
+          "Night Refill: 300–400mg Magnesium Bisglycinate 60 mins before bed to stop nocturnal cramps and speed sleep onset.",
+          "Strict Protection: Zero forward spinal flexion (use Hip Hinge) and 5-day max limit on rescue NSAIDs."
+        ]
+      },
+      2: {
+        title: "Weeks 3–4: Isometric 'Guy-Wires' & Deep Sleep Phase",
+        goal: "Build a stiff muscular corset to stress-shield the disc and stimulate tendon synthesis without joint shear.",
+        items: [
+          "Isometric Core Rigging: Progress to 30–45 second Side Planks, Bird-Dogs, and anti-rotation Pallof Presses.",
+          "Bernard Tendon Stimulus: 1x/week high-load, slow isometric holds (45s × 4 sets) to stimulate tenocytes and cortical analgesia.",
+          "Zero-Shear Cardio: 30-min brisk walks, upright stationary cycling (neutral spine), or Backstroke / Snorkel Freestyle swimming.",
+          "Day 30 Sleep Check: Compare your Day 30 Sleep Quality and Morning Stiffness scores against Day 1."
+        ]
+      },
+      3: {
+        title: "Weeks 5–6: Load Capacity Expansion (Remodeling to Type I Collagen)",
+        goal: "Widen your mechanical 'Envelope of Function' and align new collagen fibres along lines of tension.",
+        items: [
+          "Active Decompression: Introduce toe-touch dead hangs (60s) or 30° intermittent oscillation (with mandatory 5-min flat cool-down).",
+          "Axial Shock Absorption: Upright Farmer's Carries and Suitcase Carries to train dynamic paraspinal endurance.",
+          "Graduated Return to Sport: If morning stiffness and pain are ≤2/10, begin graded interval loading (building volume max 10%/week)."
+        ]
+      }
+    };
+
+    function setPhase(num) {
+      [1, 2, 3].forEach(n => {
+        const btn = document.getElementById('tab' + n);
+        if (n === num) {
+          btn.className = "py-2 px-3 rounded-xl font-semibold text-xs sm:text-sm bg-teal-600 text-white shadow-sm transition";
+        } else {
+          btn.className = "py-2 px-3 rounded-xl font-semibold text-xs sm:text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+        }
+      });
+      const p = phases[num];
+      const listHtml = p.items.map(i => `<li class="flex items-start space-x-2 text-xs sm:text-sm text-slate-700"><span class="text-teal-600 font-bold">✓</span><span>${i}</span></li>`).join('');
+      document.getElementById('phaseContent').innerHTML = `
+        <h4 class="font-bold text-slate-900 text-sm sm:text-base">${p.title}</h4>
+        <p class="text-xs text-teal-800 bg-teal-50 border border-teal-200 px-3 py-2 rounded-lg"><strong>Biological Target:</strong> ${p.goal}</p>
+        <ul class="space-y-1.5 pt-1">${listHtml}</ul>
+      `;
+    }
+
+    function calculateCurrentScore() {
+      const sleep = parseFloat(document.getElementById('sleepInput').value);
+      const sleepQual = parseInt(document.getElementById('sleepQualInput').value);
+      const stiff = parseInt(document.getElementById('stiffInput').value);
+      const live = parseInt(document.getElementById('liveInput').value);
+      const pain = parseInt(document.getElementById('painInput').value);
+
+      let score = 50;
+      score += (sleep - 6.5) * 7;
+      score += (sleepQual - 5) * 1.5;
+      score += (live - 5) * 2.5;
+      score -= (stiff - 3) * 3.5;
+      score -= (pain - 2) * 5;
+
+      if (document.getElementById('chkVitC1').checked) score += 6;
+      if (document.getElementById('chkDecomp').checked) score += 8;
+      if (document.getElementById('chkWalk').checked) score += 7;
+      if (document.getElementById('chkVitC2').checked) score += 7;
+      if (document.getElementById('chkFlexion').checked) score -= 22;
+
+      return Math.max(10, Math.min(99, Math.round(score)));
+    }
+
+    function updateEnvelope() {
+      const sleep = parseFloat(document.getElementById('sleepInput').value);
+      const sleepQual = parseInt(document.getElementById('sleepQualInput').value);
+      const stiff = parseInt(document.getElementById('stiffInput').value);
+      const live = parseInt(document.getElementById('liveInput').value);
+      const pain = parseInt(document.getElementById('painInput').value);
+
+      document.getElementById('sleepVal').innerText = sleep + " hrs";
+      document.getElementById('sleepQualVal').innerText = sleepQual + " / 10";
+      document.getElementById('stiffVal').innerText = stiff + " / 10";
+      document.getElementById('liveVal').innerText = live + " / 10";
+      document.getElementById('painVal').innerText = pain + " / 10";
+
+      const score = calculateCurrentScore();
+
+      const scoreEl = document.getElementById('envelopeScore');
+      const barEl = document.getElementById('envelopeBar');
+      const badgeEl = document.getElementById('envelopeBadge');
+      const adviceEl = document.getElementById('envelopeAdvice');
+
+      scoreEl.innerText = score + "%";
+      barEl.style.width = score + "%";
+
+      if (score >= 75) {
+        scoreEl.className = "text-4xl font-extrabold text-teal-400";
+        barEl.className = "bg-teal-400 h-full transition-all duration-300";
+        badgeEl.className = "text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500 text-slate-950";
+        badgeEl.innerText = "Inside Repair Envelope (+Surplus)";
+        adviceEl.innerText = "Optimal regeneration state: Your overnight cellular repair and osmotic disc hydration are outpacing daily mechanical wear.";
+      } else if (score >= 50) {
+        scoreEl.className = "text-4xl font-extrabold text-amber-400";
+        barEl.className = "bg-amber-400 h-full transition-all duration-300";
+        badgeEl.className = "text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950";
+        badgeEl.innerText = "Borderline Threshold";
+        adviceEl.innerText = "Warning: You are nearing your repair limit. Start the 15-minute 90/90 psoas timer today and take your evening Magnesium Bisglycinate + Vitamin C.";
+      } else {
+        scoreEl.className = "text-4xl font-extrabold text-rose-400";
+        barEl.className = "bg-rose-500 h-full transition-all duration-300";
+        badgeEl.className = "text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500 text-white";
+        badgeEl.innerText = "Envelope Exceeded (Catabolic Overload)";
+        adviceEl.innerText = "Overload Alert: Mechanical work has exceeded your repair capacity. Eliminate forward bending immediately, perform 90/90 unloading, and prioritize 8h flat sleep.";
+      }
+    }
+
+    // 15-Minute 90/90 Decompression Timer
+    let timerSeconds = 900;
+    let timerInterval = null;
+
+    function toggleTimer() {
+      const btn = document.getElementById('timerBtn');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.innerText = "Resume";
+      } else {
+        btn.innerText = "Pause";
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const s = String(timerSeconds % 60).padStart(2, '0');
+            document.getElementById('timerDisplay').innerText = `${m}:${s}`;
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            document.getElementById('chkDecomp').checked = true;
+            updateEnvelope();
+            alert("15-Minute 90/90 Psoas Decompression Complete! Your disc refill has been credited to today's Repair Envelope.");
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerSeconds = 900;
+      document.getElementById('timerDisplay').innerText = "15:00";
+      document.getElementById('timerBtn').innerText = "Start 15m";
+    }
+
+    // LocalStorage Patient Log History
+    function saveDailyLog() {
+      const entry = {
+        date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }),
+        sleep: document.getElementById('sleepInput').value + 'h',
+        sleepQual: document.getElementById('sleepQualInput').value + '/10',
+        stiff: document.getElementById('stiffInput').value + '/10',
+        live: document.getElementById('liveInput').value + '/10',
+        pain: document.getElementById('painInput').value + '/10',
+        score: calculateCurrentScore() + '%'
+      };
+      const logs = JSON.parse(localStorage.getItem('spinePreservationLogs') || '[]');
+      logs.unshift(entry);
+      localStorage.setItem('spinePreservationLogs', JSON.stringify(logs.slice(0, 42)));
+      renderLogs();
+    }
+
+    function renderLogs() {
+      const logs = JSON.parse(localStorage.getItem('spinePreservationLogs') || '[]');
+      const tbody = document.getElementById('logTableBody');
+      if (logs.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-3 text-center text-slate-400">No entries saved yet. Tap "Save Today's Check-In" on the left to log Day 1.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = logs.map(l => `
+        <tr>
+          <td class="p-2 font-semibold">${l.date}</td>
+          <td class="p-2">${l.sleep}</td>
+          <td class="p-2">${l.sleepQual}</td>
+          <td class="p-2 text-amber-700 font-medium">${l.stiff}</td>
+          <td class="p-2 text-teal-700 font-medium">${l.live}</td>
+          <td class="p-2 text-rose-700 font-medium">${l.pain}</td>
+          <td class="p-2 font-bold text-slate-900">${l.score}</td>
+        </tr>
+      `).join('');
+    }
+
+    function clearLogs() {
+      localStorage.removeItem('spinePreservationLogs');
+      renderLogs();
+    }
+
+    // Generate 1-Tap .ICS Smartphone Calendar Nudge Alarms pointing to your live Netlify URL
+    function downloadNudgeAlarms() {
+      const appUrl = "https://preeminent-choux-5fabf2.netlify.app/";
+      const icsContent = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Spine Preservation Blueprint//Lui & Bernard//EN",
+        "BEGIN:VEVENT",
+        "SUMMARY:💊 Spine App: Morning Check-In + 500mg Vit C",
+        "DESCRIPTION:Log last night's sleep, morning stiffness & liveliness, and take AM 500mg Vitamin C: " + appUrl,
+        "DTSTART:20261018T080000",
+        "DTEND:20261018T081000",
+        "RRULE:FREQ=DAILY;COUNT=42",
+        "URL:" + appUrl,
+        "BEGIN:VALARM",
+        "TRIGGER:-PT0M",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Spine Preservation Morning Check-In",
+        "END:VALARM",
+        "END:VEVENT",
+        "BEGIN:VEVENT",
+        "SUMMARY:🧘 Spine App: 15-Min 90/90 Psoas Disc Refill",
+        "DESCRIPTION:Mid-day osmotic disc refill! Lie in 90/90 position for 15 mins or take a brisk 1.5Hz walk: " + appUrl,
+        "DTSTART:20261018T133000",
+        "DTEND:20261018T134500",
+        "RRULE:FREQ=DAILY;COUNT=42",
+        "URL:" + appUrl,
+        "BEGIN:VALARM",
+        "TRIGGER:-PT0M",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:15-Min 90/90 Psoas Decompression Nudge",
+        "END:VALARM",
+        "END:VEVENT",
+        "BEGIN:VEVENT",
+        "SUMMARY:🌙 Spine App: Evening Pain Log + Magnesium & Vit C",
+        "DESCRIPTION:Log today's mechanical load & pain (1-10) and take PM 500mg Vitamin C + 300-400mg Magnesium Bisglycinate: " + appUrl,
+        "DTSTART:20261018T200000",
+        "DTEND:20261018T201000",
+        "RRULE:FREQ=DAILY;COUNT=42",
+        "URL:" + appUrl,
+        "BEGIN:VALARM",
+        "TRIGGER:-PT0M",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Evening Spine Preservation Check-In",
+        "END:VALARM",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'Spine_Preservation_6Week_Nudges.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function enrolPatient() {
+      const id = document.getElementById('studyIdInput').value || 'ANON-PATIENT';
+      const consent = document.getElementById('consentChk').checked;
+      if (!consent) {
+        alert("Please tick the consent box to join the Spine Preservation Registry.");
+        return;
+      }
+      saveDailyLog();
+      alert("Enrolment logged for Study ID: " + id + ". Downloading your 6-Week Phone Nudge Alarms now!");
+      downloadNudgeAlarms();
+    }
+
+    // Initialize defaults
+    setPhase(1);
+    updateEnvelope();
+    renderLogs();
+  </script>
+</body>
+</html>
